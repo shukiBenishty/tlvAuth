@@ -60,7 +60,7 @@ class Otp extends React.Component {
     componentWillMount() {
 
         if (this.props.personalId == '') {
-            this.props.router.push('/')
+            this.props.router.push("/")
         }
     }
 

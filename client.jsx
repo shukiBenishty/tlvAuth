@@ -5,7 +5,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { Router, browserHistory, Route, IndexRoute } from 'react-router';
+import { Router, hashHistory, Route, IndexRoute } from 'react-router';
 import { _ } from 'underscore';
 
 
@@ -61,9 +61,11 @@ const store = createStore(reducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDom.render(<Provider store={store}>
-                    <Router history={browserHistory}>
-                        <Route path="/" component={Sms} />
-                        <Route path="otp" component={Otp} />
+                    <Router history={hashHistory}>
+                        <Route path="default.html" component={App}>
+                          <Route path="/" component={Sms}/>
+                          <Route path="/otp" component={Otp}/>
+                        </Route>
                     </Router>
                 </Provider>,
                   document.getElementById('container'));
